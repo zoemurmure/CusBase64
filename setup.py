@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="cusbase64",
-    version="0.1",
+    version="0.2",
     author="zoemurmure",
     author_email="zoemurmure@gmail.com",
     description="Customized base64 algorithm",

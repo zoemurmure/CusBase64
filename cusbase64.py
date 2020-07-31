@@ -63,13 +63,27 @@ class CusBase64(object):
             binary = ''.join([format(self.idx_str.index(c), '0>6b') for c in str])
 
             # Remove additional zero
-            binary = binary[:-(len(binary)%8)]
+            binary = self.remove(binary)
 
             result = ''.join([chr(int(binary[8*i:8*i+8], 2)) for i in range(len(binary)//8)])
         except ValueError:
             result = "Please check again!"
         
         print("%r" % result)
+
+    def remove(self, binary):
+        """
+        Remove additional zero while decoding string.
+
+        - args:
+            binary: Binary format of the index.
+        - returns:
+            Binary string without additional zero.
+        """
+        if len(binary)%8 == 0:
+            return binary
+        else:
+            return binary[:-(len(binary)%8)]
     
     def padding(self, binary):
         """
@@ -93,4 +107,3 @@ class CusBase64(object):
         """
         self.idx_str = str
         print("New indexing string is %r" % self.idx_str)
-
